@@ -152,11 +152,6 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#1A1A1A}
       <div class="pedido-body">2× Pizza de mariscos · 1× Sándwich de lomo</div>
       <div class="pedido-footer"><div><div class="pedido-total">$12.400</div><div class="pedido-rest">🦞 El Bodegón NKT</div></div><span class="tag tag-nuevo">Sin cadete</span></div>
     </div>
-    <div class="pedido-card">
-      <div class="pedido-head"><div><div style="display:flex;align-items:center;gap:6px"><span class="pedido-num">#1046</span><span class="tag tag-camino">EN CAMINO</span></div><div class="pedido-cliente">Laura Gómez</div></div><div class="pedido-hora">18:38</div></div>
-      <div class="pedido-body">1× Cazuela de mariscos</div>
-      <div class="pedido-footer"><div><div class="pedido-total">$9.800</div><div class="pedido-rest">🦞 El Bodegón NKT</div></div><span class="tag tag-ok">Marcos G.</span></div>
-    </div>
   </div>
 
   <div id="tab-restaurantes" class="content hidden">
@@ -183,11 +178,6 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#1A1A1A}
       <div class="pedido-body">2× Pizza de mariscos · 1× Sándwich de lomo</div>
       <div class="pedido-footer"><div><div class="pedido-total">$12.400</div><div class="pedido-rest">🦞 Bodegón · 📍 San Martín 542</div></div></div>
     </div>
-    <div class="pedido-card">
-      <div class="pedido-head"><div><div style="display:flex;align-items:center;gap:6px"><span class="pedido-num">#1046</span><span class="tag tag-camino">EN CAMINO</span></div><div class="pedido-cliente">Laura Gómez</div></div><div class="pedido-hora">18:38</div></div>
-      <div class="pedido-body">1× Cazuela de mariscos</div>
-      <div class="pedido-footer"><div><div class="pedido-total">$9.800</div><div class="pedido-rest">🦞 Bodegón · 📍 Mitre 1200</div></div></div>
-    </div>
   </div>
 
   <div id="tab-cadetes" class="content hidden">
@@ -213,10 +203,7 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#1A1A1A}
     <div class="field-label">Nombre completo</div><input type="text" id="new-nombre" placeholder="Ej: Juan Pérez" class="input"/>
     <div class="field-label">Email</div><input type="email" id="new-email" placeholder="usuario@all.com" class="input"/>
     <div class="field-label">Contraseña</div>
-    <div class="pass-wrap">
-      <input type="password" id="new-pass" placeholder="••••••••" class="input"/>
-      <span class="pass-ojo" id="ojo-new" onclick="togglePass('new-pass','ojo-new')">👁</span>
-    </div>
+    <div class="pass-wrap"><input type="password" id="new-pass" placeholder="••••••••" class="input"/><span class="pass-ojo" id="ojo-new" onclick="togglePass('new-pass','ojo-new')">👁</span></div>
     <div class="field-label">Rol</div>
     <select id="new-rol"><option value="encargado">Encargado de restaurante</option><option value="cadete">Cadete</option><option value="admin">Admin</option></select>
     <div class="field-label">Restaurante</div>
@@ -233,10 +220,7 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#1A1A1A}
     <div class="field-label">Nombre completo</div><input type="text" id="cad-nombre" placeholder="Ej: Carlos López" class="input"/>
     <div class="field-label">Email</div><input type="email" id="cad-email" placeholder="cadete@all.com" class="input"/>
     <div class="field-label">Contraseña</div>
-    <div class="pass-wrap">
-      <input type="password" id="cad-pass" placeholder="••••••••" class="input"/>
-      <span class="pass-ojo" id="ojo-cad" onclick="togglePass('cad-pass','ojo-cad')">👁</span>
-    </div>
+    <div class="pass-wrap"><input type="password" id="cad-pass" placeholder="••••••••" class="input"/><span class="pass-ojo" id="ojo-cad" onclick="togglePass('cad-pass','ojo-cad')">👁</span></div>
     <div class="field-label">Vehículo</div>
     <select id="cad-vehiculo"><option>Moto</option><option>Bicicleta</option><option>Auto</option></select>
     <div id="msg-cadete" style="font-size:12px;margin:8px 0;display:none"></div>
@@ -249,7 +233,7 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#1A1A1A}
 const { createClient } = supabase
 const sb = createClient(
   'https://quqtceabwkmmruiqwlg.supabase.co',
-  'sb_publishable_aNfXB2LzYxx_krHg0MnKTQ_zSTgQubp'
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF1cXRjZWFid2t3bW1ydWlxd2xnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg3ODUzNzQsImV4cCI6MjA5NDM2MTM3NH0.Ch-Zl4TZT7nzDpbYZebZpsrP52mfrTIC76Y5cuxAvkg'
 )
 
 sb.auth.getSession().then(function(result){
@@ -263,21 +247,16 @@ async function ingresar(){
   var pass = document.getElementById('login-pass').value
   var btn = document.getElementById('btn-ingresar')
   var err = document.getElementById('error-msg')
-
   if(!email || !pass){ err.style.display='block'; err.textContent='Completá email y contraseña'; return }
-
   btn.textContent = 'Ingresando...'
   err.style.display = 'none'
-
   var result = await sb.auth.signInWithPassword({ email: email, password: pass })
-
   if(result.error){
     err.style.display = 'block'
-    err.textContent = 'Email o contraseña incorrectos'
+    err.textContent = 'Email o contraseña incorrectos: ' + result.error.message
     btn.textContent = 'Ingresar al panel →'
     return
   }
-
   if(result.data.user.email !== 'admin@all.com'){
     err.style.display = 'block'
     err.textContent = 'No tenés permisos de administrador'
@@ -285,7 +264,6 @@ async function ingresar(){
     await sb.auth.signOut()
     return
   }
-
   mostrarPanel(result.data.user.email)
 }
 
@@ -305,13 +283,8 @@ async function cerrarSesion(){
 function togglePass(inputId, ojoId){
   var input = document.getElementById(inputId)
   var ojo = document.getElementById(ojoId)
-  if(input.type === 'password'){
-    input.type = 'text'
-    ojo.textContent = '🙈'
-  } else {
-    input.type = 'password'
-    ojo.textContent = '👁'
-  }
+  if(input.type === 'password'){ input.type = 'text'; ojo.textContent = '🙈' }
+  else { input.type = 'password'; ojo.textContent = '👁' }
 }
 
 function switchTab(tab, el){
@@ -330,7 +303,7 @@ async function crearUsuario(){
   var pass = document.getElementById('new-pass').value
   var msg = document.getElementById('msg-usuario')
   if(!email || !pass){ msg.style.display='block'; msg.style.color='#E24B4A'; msg.textContent='Completá todos los campos'; return }
-  msg.style.display='block'; msg.style.color='#888'; msg.textContent='Creando usuario...'
+  msg.style.display='block'; msg.style.color='#888'; msg.textContent='Creando...'
   var result = await sb.auth.signUp({ email: email, password: pass })
   if(result.error){ msg.style.color='#E24B4A'; msg.textContent='Error: '+result.error.message; return }
   msg.style.color='#2D6A2D'; msg.textContent='✓ Usuario creado correctamente'
@@ -341,7 +314,7 @@ async function crearCadete(){
   var pass = document.getElementById('cad-pass').value
   var msg = document.getElementById('msg-cadete')
   if(!email || !pass){ msg.style.display='block'; msg.style.color='#E24B4A'; msg.textContent='Completá todos los campos'; return }
-  msg.style.display='block'; msg.style.color='#888'; msg.textContent='Creando cadete...'
+  msg.style.display='block'; msg.style.color='#888'; msg.textContent='Creando...'
   var result = await sb.auth.signUp({ email: email, password: pass })
   if(result.error){ msg.style.color='#E24B4A'; msg.textContent='Error: '+result.error.message; return }
   msg.style.color='#2D6A2D'; msg.textContent='✓ Cadete agregado correctamente'
