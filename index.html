@@ -16,10 +16,8 @@
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html,body{width:100%;height:100%;overflow:hidden}
 body{font-family:system-ui,-apple-system,sans-serif;background:#1A1A1A}
-
 #screen-login{display:flex;width:100%;height:100vh;background:#1A1A1A;flex-direction:column;overflow:hidden}
 #screen-panel{display:none;width:100%;height:100vh;background:#f5f5f5;flex-direction:column;overflow:hidden}
-
 .login-hero{background:#1A1A1A;padding:48px 24px 24px;display:flex;flex-direction:column;align-items:center;gap:10px;flex-shrink:0}
 .login-title{font-size:26px;font-weight:700;letter-spacing:-1px;color:#fff}
 .login-sub{font-size:12px;color:rgba(255,255,255,0.4)}
@@ -29,21 +27,16 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#1A1A1A}
 .btn-main{width:100%;padding:16px;background:#1A1A1A;color:#fff;border:none;border-radius:14px;font-size:16px;font-weight:700;cursor:pointer}
 .btn-naranja{background:#FF4D00 !important}
 .error-msg{color:#E24B4A;font-size:12px;margin-bottom:12px;padding:10px;background:#FFF0F0;border-radius:8px;display:none}
-.loading{opacity:0.6;pointer-events:none}
-
 .topbar{padding:48px 16px 12px;background:#1A1A1A;display:flex;align-items:center;gap:10px;flex-shrink:0}
 .topbar-logo{font-size:20px;font-weight:700;letter-spacing:-1px;color:#fff}
 .topbar-logo span{color:#FF4D00}
 .topbar-sub{font-size:11px;color:rgba(255,255,255,0.4);margin-top:2px}
 .topbar-right{margin-left:auto}
-
 .nav{display:flex;background:#1A1A1A;padding:0 12px 12px;overflow-x:auto;gap:6px;flex-shrink:0}
 .nav::-webkit-scrollbar{display:none}
 .nav-btn{padding:8px 16px;border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;border:none;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.6);white-space:nowrap;flex-shrink:0}
 .nav-btn.active{background:#FF4D00;color:#fff}
-
 .content{flex:1;padding:14px;overflow-y:auto}
-
 .stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
 .stat-card{background:#fff;border-radius:16px;padding:16px;border:1px solid #eee}
 .stat-card.highlight{background:#FF4D00}
@@ -52,9 +45,7 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#1A1A1A}
 .stat-label{font-size:11px;color:#888;margin-top:2px}
 .stat-card.highlight .stat-val{color:#fff}
 .stat-card.highlight .stat-label{color:rgba(255,255,255,0.7)}
-
 .section-title{font-size:11px;font-weight:700;color:#888;letter-spacing:1px;text-transform:uppercase;margin:16px 0 10px}
-
 .rest-card{background:#fff;border-radius:16px;border:1px solid #eee;margin-bottom:10px;overflow:hidden}
 .rest-head{padding:14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid #f5f5f5}
 .rest-emoji{font-size:26px;width:48px;height:48px;border-radius:12px;background:#f5f5f5;display:flex;align-items:center;justify-content:center;flex-shrink:0}
@@ -68,7 +59,6 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#1A1A1A}
 .rest-stat{text-align:center}
 .rest-stat-val{font-size:16px;font-weight:700;color:#1A1A1A}
 .rest-stat-label{font-size:10px;color:#888}
-
 .pedido-card{background:#fff;border-radius:14px;border:1px solid #eee;margin-bottom:10px;overflow:hidden}
 .pedido-head{padding:12px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #f5f5f5}
 .pedido-num{font-size:12px;font-weight:700;color:#FF4D00}
@@ -82,7 +72,6 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#1A1A1A}
 .pedido-footer{padding:10px 14px;display:flex;align-items:center;justify-content:space-between}
 .pedido-total{font-size:14px;font-weight:700;color:#1A1A1A}
 .pedido-rest{font-size:11px;color:#888;margin-top:2px}
-
 .cadete-card{background:#fff;border-radius:14px;border:1px solid #eee;margin-bottom:10px;padding:14px;display:flex;align-items:center;gap:12px}
 .cadete-avatar{width:46px;height:46px;border-radius:50%;background:#1A1A1A;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#FF4D00;flex-shrink:0}
 .cadete-info{flex:1}
@@ -91,21 +80,20 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#1A1A1A}
 .cadete-badge{font-size:10px;font-weight:700;padding:4px 10px;border-radius:20px}
 .cadete-badge.activo{background:#E8F5E9;color:#2D6A2D}
 .cadete-badge.libre{background:#f5f5f5;color:#888}
-
 .user-card{background:#fff;border-radius:14px;border:1px solid #eee;margin-bottom:10px;padding:14px;display:flex;align-items:center;gap:12px}
 .user-avatar{width:42px;height:42px;border-radius:50%;background:#FF4D00;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#fff;flex-shrink:0}
 .user-info{flex:1}
 .user-nombre{font-size:14px;font-weight:600;color:#1A1A1A}
 .user-email{font-size:11px;color:#888;margin-top:2px}
 .user-rol{font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;background:#f5f5f5;color:#555}
-
 .btn-add{width:100%;padding:14px;background:#f5f5f5;color:#1A1A1A;border:1.5px dashed #ddd;border-radius:14px;font-size:14px;font-weight:700;cursor:pointer;margin-top:4px}
-
 .modal-bg{position:fixed;inset:0;background:rgba(0,0,0,0.5);display:flex;align-items:flex-end;z-index:100}
 .modal{background:#fff;border-radius:24px 24px 0 0;padding:24px 20px;width:100%;max-height:80vh;overflow-y:auto}
 .modal-title{font-size:18px;font-weight:700;color:#1A1A1A;margin-bottom:20px}
 .modal select{width:100%;padding:14px;font-size:15px;border-radius:12px;border:1.5px solid #eee;background:#fafafa;color:#1A1A1A;margin-bottom:16px;outline:none}
-
+.pass-wrap{position:relative;margin-bottom:16px}
+.pass-wrap input{margin-bottom:0;padding-right:48px}
+.pass-ojo{position:absolute;right:14px;top:50%;transform:translateY(-50%);cursor:pointer;font-size:18px;user-select:none}
 .hidden{display:none !important}
 </style>
 </head>
@@ -121,11 +109,14 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#1A1A1A}
     <div class="login-sub">Acceso exclusivo para administradores</div>
   </div>
   <div class="login-body">
-    <div id="error-msg" class="error-msg">Email o contraseña incorrectos</div>
+    <div id="error-msg" class="error-msg"></div>
     <div class="field-label">Email</div>
     <input type="email" placeholder="admin@all.com" class="input" id="login-email"/>
     <div class="field-label">Contraseña</div>
-    <input type="password" placeholder="••••••••" class="input" id="login-pass"/>
+    <div class="pass-wrap">
+      <input type="password" placeholder="••••••••" class="input" id="login-pass"/>
+      <span class="pass-ojo" id="ojo-login" onclick="togglePass('login-pass','ojo-login')">👁</span>
+    </div>
     <button class="btn-main" id="btn-ingresar" onclick="ingresar()">Ingresar al panel →</button>
   </div>
 </div>
@@ -208,12 +199,10 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#1A1A1A}
 
   <div id="tab-usuarios" class="content hidden">
     <div class="section-title">Usuarios del sistema</div>
-    <div id="lista-usuarios">
-      <div class="user-card"><div class="user-avatar">JP</div><div class="user-info"><div class="user-nombre">Administrador</div><div class="user-email">admin@all.com</div></div><span class="user-rol">Admin</span></div>
-      <div class="user-card"><div class="user-avatar" style="background:#2D6A2D">NB</div><div class="user-info"><div class="user-nombre">Encargado Bodegón</div><div class="user-email">bodegon@all.com</div></div><span class="user-rol">Encargado</span></div>
-      <div class="user-card"><div class="user-avatar" style="background:#2D6A2D">CO</div><div class="user-info"><div class="user-nombre">Encargado Colantonio's</div><div class="user-email">colantonio@all.com</div></div><span class="user-rol">Encargado</span></div>
-      <div class="user-card"><div class="user-avatar" style="background:#2D6A2D">KS</div><div class="user-info"><div class="user-nombre">Encargado Kusama</div><div class="user-email">kusama@all.com</div></div><span class="user-rol">Encargado</span></div>
-    </div>
+    <div class="user-card"><div class="user-avatar">JP</div><div class="user-info"><div class="user-nombre">Administrador</div><div class="user-email">admin@all.com</div></div><span class="user-rol">Admin</span></div>
+    <div class="user-card"><div class="user-avatar" style="background:#2D6A2D">NB</div><div class="user-info"><div class="user-nombre">Encargado Bodegón</div><div class="user-email">bodegon@all.com</div></div><span class="user-rol">Encargado</span></div>
+    <div class="user-card"><div class="user-avatar" style="background:#2D6A2D">CO</div><div class="user-info"><div class="user-nombre">Encargado Colantonio's</div><div class="user-email">colantonio@all.com</div></div><span class="user-rol">Encargado</span></div>
+    <div class="user-card"><div class="user-avatar" style="background:#2D6A2D">KS</div><div class="user-info"><div class="user-nombre">Encargado Kusama</div><div class="user-email">kusama@all.com</div></div><span class="user-rol">Encargado</span></div>
     <button class="btn-add" onclick="mostrarModalUsuario()">+ Agregar usuario</button>
   </div>
 </div>
@@ -223,12 +212,16 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#1A1A1A}
     <div class="modal-title">Nuevo usuario</div>
     <div class="field-label">Nombre completo</div><input type="text" id="new-nombre" placeholder="Ej: Juan Pérez" class="input"/>
     <div class="field-label">Email</div><input type="email" id="new-email" placeholder="usuario@all.com" class="input"/>
-    <div class="field-label">Contraseña</div><input type="password" id="new-pass" placeholder="••••••••" class="input"/>
+    <div class="field-label">Contraseña</div>
+    <div class="pass-wrap">
+      <input type="password" id="new-pass" placeholder="••••••••" class="input"/>
+      <span class="pass-ojo" id="ojo-new" onclick="togglePass('new-pass','ojo-new')">👁</span>
+    </div>
     <div class="field-label">Rol</div>
     <select id="new-rol"><option value="encargado">Encargado de restaurante</option><option value="cadete">Cadete</option><option value="admin">Admin</option></select>
     <div class="field-label">Restaurante</div>
     <select id="new-rest"><option>El Bodegón NKT</option><option>Colantonio's</option><option>Kusama Sushi</option></select>
-    <div id="msg-usuario" style="font-size:12px;margin:8px 0;color:#2D6A2D;display:none">✓ Usuario creado correctamente</div>
+    <div id="msg-usuario" style="font-size:12px;margin:8px 0;display:none"></div>
     <button class="btn-main btn-naranja" style="margin-top:8px" onclick="crearUsuario()">Crear usuario</button>
     <button class="btn-add" style="margin-top:8px" onclick="cerrarModal('modal-usuario')">Cancelar</button>
   </div>
@@ -239,26 +232,28 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#1A1A1A}
     <div class="modal-title">Nuevo cadete</div>
     <div class="field-label">Nombre completo</div><input type="text" id="cad-nombre" placeholder="Ej: Carlos López" class="input"/>
     <div class="field-label">Email</div><input type="email" id="cad-email" placeholder="cadete@all.com" class="input"/>
-    <div class="field-label">Contraseña</div><input type="password" id="cad-pass" placeholder="••••••••" class="input"/>
+    <div class="field-label">Contraseña</div>
+    <div class="pass-wrap">
+      <input type="password" id="cad-pass" placeholder="••••••••" class="input"/>
+      <span class="pass-ojo" id="ojo-cad" onclick="togglePass('cad-pass','ojo-cad')">👁</span>
+    </div>
     <div class="field-label">Vehículo</div>
     <select id="cad-vehiculo"><option>Moto</option><option>Bicicleta</option><option>Auto</option></select>
-    <div id="msg-cadete" style="font-size:12px;margin:8px 0;color:#2D6A2D;display:none">✓ Cadete agregado correctamente</div>
+    <div id="msg-cadete" style="font-size:12px;margin:8px 0;display:none"></div>
     <button class="btn-main btn-naranja" style="margin-top:8px" onclick="crearCadete()">Agregar cadete</button>
     <button class="btn-add" style="margin-top:8px" onclick="cerrarModal('modal-cadete')">Cancelar</button>
   </div>
 </div>
 
 <script>
-// Supabase
 const { createClient } = supabase
 const sb = createClient(
   'https://quqtceabwkmmruiqwlg.supabase.co',
   'sb_publishable_aNfXB2LzYxx_krHg0MnKTQ_zSTgQubp'
 )
 
-// Verificar sesión al cargar
 sb.auth.getSession().then(function(result){
-  if(result.data.session){
+  if(result.data.session && result.data.session.user.email === 'admin@all.com'){
     mostrarPanel(result.data.session.user.email)
   }
 })
@@ -272,7 +267,6 @@ async function ingresar(){
   if(!email || !pass){ err.style.display='block'; err.textContent='Completá email y contraseña'; return }
 
   btn.textContent = 'Ingresando...'
-  btn.classList.add('loading')
   err.style.display = 'none'
 
   var result = await sb.auth.signInWithPassword({ email: email, password: pass })
@@ -281,16 +275,13 @@ async function ingresar(){
     err.style.display = 'block'
     err.textContent = 'Email o contraseña incorrectos'
     btn.textContent = 'Ingresar al panel →'
-    btn.classList.remove('loading')
     return
   }
 
-  // Solo admin puede entrar
   if(result.data.user.email !== 'admin@all.com'){
     err.style.display = 'block'
     err.textContent = 'No tenés permisos de administrador'
     btn.textContent = 'Ingresar al panel →'
-    btn.classList.remove('loading')
     await sb.auth.signOut()
     return
   }
@@ -311,6 +302,18 @@ async function cerrarSesion(){
   document.getElementById('btn-ingresar').textContent = 'Ingresar al panel →'
 }
 
+function togglePass(inputId, ojoId){
+  var input = document.getElementById(inputId)
+  var ojo = document.getElementById(ojoId)
+  if(input.type === 'password'){
+    input.type = 'text'
+    ojo.textContent = '🙈'
+  } else {
+    input.type = 'password'
+    ojo.textContent = '👁'
+  }
+}
+
 function switchTab(tab, el){
   document.querySelectorAll('.nav-btn').forEach(function(b){b.classList.remove('active')})
   el.classList.add('active')
@@ -326,31 +329,22 @@ async function crearUsuario(){
   var email = document.getElementById('new-email').value.trim()
   var pass = document.getElementById('new-pass').value
   var msg = document.getElementById('msg-usuario')
-
   if(!email || !pass){ msg.style.display='block'; msg.style.color='#E24B4A'; msg.textContent='Completá todos los campos'; return }
-
-  var result = await sb.auth.admin ? 
-    await fetch('https://quqtceabwkmmruiqwlg.supabase.co/auth/v1/admin/users', {
-      method:'POST',
-      headers:{'Content-Type':'application/json','apikey':'sb_publishable_aNfXB2LzYxx_krHg0MnKTQ_zSTgQubp','Authorization':'Bearer sb_publishable_aNfXB2LzYxx_krHg0MnKTQ_zSTgQubp'},
-      body: JSON.stringify({email:email, password:pass, email_confirm:true})
-    }) : null
-
-  msg.style.display = 'block'
-  msg.style.color = '#2D6A2D'
-  msg.textContent = '✓ Usuario creado en Supabase'
+  msg.style.display='block'; msg.style.color='#888'; msg.textContent='Creando usuario...'
+  var result = await sb.auth.signUp({ email: email, password: pass })
+  if(result.error){ msg.style.color='#E24B4A'; msg.textContent='Error: '+result.error.message; return }
+  msg.style.color='#2D6A2D'; msg.textContent='✓ Usuario creado correctamente'
 }
 
 async function crearCadete(){
   var email = document.getElementById('cad-email').value.trim()
   var pass = document.getElementById('cad-pass').value
   var msg = document.getElementById('msg-cadete')
-
   if(!email || !pass){ msg.style.display='block'; msg.style.color='#E24B4A'; msg.textContent='Completá todos los campos'; return }
-
-  msg.style.display = 'block'
-  msg.style.color = '#2D6A2D'
-  msg.textContent = '✓ Cadete agregado correctamente'
+  msg.style.display='block'; msg.style.color='#888'; msg.textContent='Creando cadete...'
+  var result = await sb.auth.signUp({ email: email, password: pass })
+  if(result.error){ msg.style.color='#E24B4A'; msg.textContent='Error: '+result.error.message; return }
+  msg.style.color='#2D6A2D'; msg.textContent='✓ Cadete agregado correctamente'
 }
 
 function mostrarModalUsuario(){ document.getElementById('modal-usuario').classList.remove('hidden') }
