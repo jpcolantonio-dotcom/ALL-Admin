@@ -11,6 +11,7 @@
 <meta name="theme-color" content="#1A1A1A"/>
 <link rel="manifest" href="manifest.json"/>
 <title>ALL — Admin</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html,body{width:100%;height:100%;overflow:hidden}
@@ -27,6 +28,8 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#1A1A1A}
 .input{width:100%;padding:14px;font-size:15px;border-radius:12px;border:1.5px solid #eee;background:#fafafa;color:#1A1A1A;margin-bottom:16px;outline:none}
 .btn-main{width:100%;padding:16px;background:#1A1A1A;color:#fff;border:none;border-radius:14px;font-size:16px;font-weight:700;cursor:pointer}
 .btn-naranja{background:#FF4D00 !important}
+.error-msg{color:#E24B4A;font-size:12px;margin-bottom:12px;padding:10px;background:#FFF0F0;border-radius:8px;display:none}
+.loading{opacity:0.6;pointer-events:none}
 
 .topbar{padding:48px 16px 12px;background:#1A1A1A;display:flex;align-items:center;gap:10px;flex-shrink:0}
 .topbar-logo{font-size:20px;font-weight:700;letter-spacing:-1px;color:#fff}
@@ -73,7 +76,6 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#1A1A1A}
 .pedido-hora{font-size:11px;color:#888}
 .tag{font-size:10px;font-weight:700;padding:4px 10px;border-radius:20px}
 .tag-nuevo{background:#FFF0E5;color:#FF4D00}
-.tag-prep{background:#FFF9E5;color:#B8860B}
 .tag-camino{background:#E3F2FD;color:#1565C0}
 .tag-ok{background:#E8F5E9;color:#2D6A2D}
 .pedido-body{padding:10px 14px;font-size:12px;color:#555;border-bottom:1px solid #f5f5f5}
@@ -119,11 +121,12 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#1A1A1A}
     <div class="login-sub">Acceso exclusivo para administradores</div>
   </div>
   <div class="login-body">
+    <div id="error-msg" class="error-msg">Email o contraseña incorrectos</div>
     <div class="field-label">Email</div>
     <input type="email" placeholder="admin@all.com" class="input" id="login-email"/>
     <div class="field-label">Contraseña</div>
     <input type="password" placeholder="••••••••" class="input" id="login-pass"/>
-    <button class="btn-main" onclick="ingresar()">Ingresar al panel →</button>
+    <button class="btn-main" id="btn-ingresar" onclick="ingresar()">Ingresar al panel →</button>
   </div>
 </div>
 
@@ -131,7 +134,7 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#1A1A1A}
   <div class="topbar">
     <div>
       <div class="topbar-logo">ALL <span>Admin</span></div>
-      <div class="topbar-sub">Panel de administración</div>
+      <div class="topbar-sub" id="user-email-display">Panel de administración</div>
     </div>
     <div class="topbar-right">
       <button style="background:rgba(255,255,255,0.1);border:none;color:#fff;padding:8px 14px;border-radius:20px;font-size:12px;cursor:pointer" onclick="cerrarSesion()">Salir</button>
@@ -154,18 +157,12 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#1A1A1A}
     </div>
     <div class="section-title">Pedidos en curso</div>
     <div class="pedido-card">
-      <div class="pedido-head">
-        <div><div style="display:flex;align-items:center;gap:6px"><span class="pedido-num">#1047</span><span class="tag tag-nuevo">NUEVO</span></div><div class="pedido-cliente">Martín Rodríguez</div></div>
-        <div class="pedido-hora">18:52</div>
-      </div>
+      <div class="pedido-head"><div><div style="display:flex;align-items:center;gap:6px"><span class="pedido-num">#1047</span><span class="tag tag-nuevo">NUEVO</span></div><div class="pedido-cliente">Martín Rodríguez</div></div><div class="pedido-hora">18:52</div></div>
       <div class="pedido-body">2× Pizza de mariscos · 1× Sándwich de lomo</div>
       <div class="pedido-footer"><div><div class="pedido-total">$12.400</div><div class="pedido-rest">🦞 El Bodegón NKT</div></div><span class="tag tag-nuevo">Sin cadete</span></div>
     </div>
     <div class="pedido-card">
-      <div class="pedido-head">
-        <div><div style="display:flex;align-items:center;gap:6px"><span class="pedido-num">#1046</span><span class="tag tag-camino">EN CAMINO</span></div><div class="pedido-cliente">Laura Gómez</div></div>
-        <div class="pedido-hora">18:38</div>
-      </div>
+      <div class="pedido-head"><div><div style="display:flex;align-items:center;gap:6px"><span class="pedido-num">#1046</span><span class="tag tag-camino">EN CAMINO</span></div><div class="pedido-cliente">Laura Gómez</div></div><div class="pedido-hora">18:38</div></div>
       <div class="pedido-body">1× Cazuela de mariscos</div>
       <div class="pedido-footer"><div><div class="pedido-total">$9.800</div><div class="pedido-rest">🦞 El Bodegón NKT</div></div><span class="tag tag-ok">Marcos G.</span></div>
     </div>
@@ -200,27 +197,23 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#1A1A1A}
       <div class="pedido-body">1× Cazuela de mariscos</div>
       <div class="pedido-footer"><div><div class="pedido-total">$9.800</div><div class="pedido-rest">🦞 Bodegón · 📍 Mitre 1200</div></div></div>
     </div>
-    <div class="pedido-card">
-      <div class="pedido-head"><div><div style="display:flex;align-items:center;gap:6px"><span class="pedido-num">#1045</span><span class="tag tag-ok">ENTREGADO</span></div><div class="pedido-cliente">Carlos Pérez</div></div><div class="pedido-hora">18:10</div></div>
-      <div class="pedido-body">3× Empanada de mariscos</div>
-      <div class="pedido-footer"><div><div class="pedido-total">$4.200</div><div class="pedido-rest">🦞 Bodegón · 📍 O'Higgins 880</div></div></div>
-    </div>
   </div>
 
   <div id="tab-cadetes" class="content hidden">
     <div class="section-title">Cadetes registrados</div>
-    <div class="cadete-card"><div class="cadete-avatar">MG</div><div class="cadete-info"><div class="cadete-nombre">Marcos González</div><div class="cadete-sub">🏍 Moto · Pedido #1046 en camino</div></div><span class="cadete-badge activo">Activo</span></div>
+    <div class="cadete-card"><div class="cadete-avatar">MG</div><div class="cadete-info"><div class="cadete-nombre">Marcos González</div><div class="cadete-sub">🏍 Moto · En camino</div></div><span class="cadete-badge activo">Activo</span></div>
     <div class="cadete-card"><div class="cadete-avatar">LP</div><div class="cadete-info"><div class="cadete-nombre">Laura Peralta</div><div class="cadete-sub">🚲 Bici · Disponible</div></div><span class="cadete-badge libre">Libre</span></div>
-    <div class="cadete-card"><div class="cadete-avatar">JR</div><div class="cadete-info"><div class="cadete-nombre">Juan Rodríguez</div><div class="cadete-sub">🏍 Moto · Fuera de turno</div></div><span class="cadete-badge libre">Inactivo</span></div>
     <button class="btn-add" onclick="mostrarModalCadete()">+ Agregar cadete</button>
   </div>
 
   <div id="tab-usuarios" class="content hidden">
     <div class="section-title">Usuarios del sistema</div>
-    <div class="user-card"><div class="user-avatar">JP</div><div class="user-info"><div class="user-nombre">JP Colantonio</div><div class="user-email">admin@all.com</div></div><span class="user-rol">Admin</span></div>
-    <div class="user-card"><div class="user-avatar" style="background:#2D6A2D">NB</div><div class="user-info"><div class="user-nombre">Encargado Bodegón</div><div class="user-email">bodegon@all.com</div></div><span class="user-rol">Encargado</span></div>
-    <div class="user-card"><div class="user-avatar" style="background:#2D6A2D">CO</div><div class="user-info"><div class="user-nombre">Encargado Colantonio's</div><div class="user-email">colantonio@all.com</div></div><span class="user-rol">Encargado</span></div>
-    <div class="user-card"><div class="user-avatar" style="background:#2D6A2D">KS</div><div class="user-info"><div class="user-nombre">Encargado Kusama</div><div class="user-email">kusama@all.com</div></div><span class="user-rol">Encargado</span></div>
+    <div id="lista-usuarios">
+      <div class="user-card"><div class="user-avatar">JP</div><div class="user-info"><div class="user-nombre">Administrador</div><div class="user-email">admin@all.com</div></div><span class="user-rol">Admin</span></div>
+      <div class="user-card"><div class="user-avatar" style="background:#2D6A2D">NB</div><div class="user-info"><div class="user-nombre">Encargado Bodegón</div><div class="user-email">bodegon@all.com</div></div><span class="user-rol">Encargado</span></div>
+      <div class="user-card"><div class="user-avatar" style="background:#2D6A2D">CO</div><div class="user-info"><div class="user-nombre">Encargado Colantonio's</div><div class="user-email">colantonio@all.com</div></div><span class="user-rol">Encargado</span></div>
+      <div class="user-card"><div class="user-avatar" style="background:#2D6A2D">KS</div><div class="user-info"><div class="user-nombre">Encargado Kusama</div><div class="user-email">kusama@all.com</div></div><span class="user-rol">Encargado</span></div>
+    </div>
     <button class="btn-add" onclick="mostrarModalUsuario()">+ Agregar usuario</button>
   </div>
 </div>
@@ -228,14 +221,15 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#1A1A1A}
 <div id="modal-usuario" class="modal-bg hidden" onclick="cerrarModal('modal-usuario')">
   <div class="modal" onclick="event.stopPropagation()">
     <div class="modal-title">Nuevo usuario</div>
-    <div class="field-label">Nombre completo</div><input type="text" placeholder="Ej: Juan Pérez" class="input"/>
-    <div class="field-label">Email</div><input type="email" placeholder="usuario@all.com" class="input"/>
-    <div class="field-label">Contraseña</div><input type="password" placeholder="••••••••" class="input"/>
+    <div class="field-label">Nombre completo</div><input type="text" id="new-nombre" placeholder="Ej: Juan Pérez" class="input"/>
+    <div class="field-label">Email</div><input type="email" id="new-email" placeholder="usuario@all.com" class="input"/>
+    <div class="field-label">Contraseña</div><input type="password" id="new-pass" placeholder="••••••••" class="input"/>
     <div class="field-label">Rol</div>
-    <select><option>Encargado de restaurante</option><option>Cadete</option><option>Admin</option></select>
+    <select id="new-rol"><option value="encargado">Encargado de restaurante</option><option value="cadete">Cadete</option><option value="admin">Admin</option></select>
     <div class="field-label">Restaurante</div>
-    <select><option>El Bodegón NKT</option><option>Colantonio's</option><option>Kusama Sushi</option></select>
-    <button class="btn-main btn-naranja" style="margin-top:8px">Crear usuario</button>
+    <select id="new-rest"><option>El Bodegón NKT</option><option>Colantonio's</option><option>Kusama Sushi</option></select>
+    <div id="msg-usuario" style="font-size:12px;margin:8px 0;color:#2D6A2D;display:none">✓ Usuario creado correctamente</div>
+    <button class="btn-main btn-naranja" style="margin-top:8px" onclick="crearUsuario()">Crear usuario</button>
     <button class="btn-add" style="margin-top:8px" onclick="cerrarModal('modal-usuario')">Cancelar</button>
   </div>
 </div>
@@ -243,42 +237,126 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#1A1A1A}
 <div id="modal-cadete" class="modal-bg hidden" onclick="cerrarModal('modal-cadete')">
   <div class="modal" onclick="event.stopPropagation()">
     <div class="modal-title">Nuevo cadete</div>
-    <div class="field-label">Nombre completo</div><input type="text" placeholder="Ej: Carlos López" class="input"/>
-    <div class="field-label">Email</div><input type="email" placeholder="cadete@all.com" class="input"/>
-    <div class="field-label">Contraseña</div><input type="password" placeholder="••••••••" class="input"/>
+    <div class="field-label">Nombre completo</div><input type="text" id="cad-nombre" placeholder="Ej: Carlos López" class="input"/>
+    <div class="field-label">Email</div><input type="email" id="cad-email" placeholder="cadete@all.com" class="input"/>
+    <div class="field-label">Contraseña</div><input type="password" id="cad-pass" placeholder="••••••••" class="input"/>
     <div class="field-label">Vehículo</div>
-    <select><option>Moto</option><option>Bicicleta</option><option>Auto</option></select>
-    <button class="btn-main btn-naranja" style="margin-top:8px">Agregar cadete</button>
+    <select id="cad-vehiculo"><option>Moto</option><option>Bicicleta</option><option>Auto</option></select>
+    <div id="msg-cadete" style="font-size:12px;margin:8px 0;color:#2D6A2D;display:none">✓ Cadete agregado correctamente</div>
+    <button class="btn-main btn-naranja" style="margin-top:8px" onclick="crearCadete()">Agregar cadete</button>
     <button class="btn-add" style="margin-top:8px" onclick="cerrarModal('modal-cadete')">Cancelar</button>
   </div>
 </div>
 
 <script>
-function ingresar(){
-  var login = document.getElementById('screen-login')
-  var panel = document.getElementById('screen-panel')
-  login.style.display = 'none'
-  panel.style.display = 'flex'
+// Supabase
+const { createClient } = supabase
+const sb = createClient(
+  'https://quqtceabwkmmruiqwlg.supabase.co',
+  'sb_publishable_aNfXB2LzYxx_krHg0MnKTQ_zSTgQubp'
+)
+
+// Verificar sesión al cargar
+sb.auth.getSession().then(function(result){
+  if(result.data.session){
+    mostrarPanel(result.data.session.user.email)
+  }
+})
+
+async function ingresar(){
+  var email = document.getElementById('login-email').value.trim()
+  var pass = document.getElementById('login-pass').value
+  var btn = document.getElementById('btn-ingresar')
+  var err = document.getElementById('error-msg')
+
+  if(!email || !pass){ err.style.display='block'; err.textContent='Completá email y contraseña'; return }
+
+  btn.textContent = 'Ingresando...'
+  btn.classList.add('loading')
+  err.style.display = 'none'
+
+  var result = await sb.auth.signInWithPassword({ email: email, password: pass })
+
+  if(result.error){
+    err.style.display = 'block'
+    err.textContent = 'Email o contraseña incorrectos'
+    btn.textContent = 'Ingresar al panel →'
+    btn.classList.remove('loading')
+    return
+  }
+
+  // Solo admin puede entrar
+  if(result.data.user.email !== 'admin@all.com'){
+    err.style.display = 'block'
+    err.textContent = 'No tenés permisos de administrador'
+    btn.textContent = 'Ingresar al panel →'
+    btn.classList.remove('loading')
+    await sb.auth.signOut()
+    return
+  }
+
+  mostrarPanel(result.data.user.email)
 }
-function cerrarSesion(){
-  var login = document.getElementById('screen-login')
-  var panel = document.getElementById('screen-panel')
-  panel.style.display = 'none'
-  login.style.display = 'flex'
+
+function mostrarPanel(email){
+  document.getElementById('screen-login').style.display = 'none'
+  document.getElementById('screen-panel').style.display = 'flex'
+  document.getElementById('user-email-display').textContent = email
 }
+
+async function cerrarSesion(){
+  await sb.auth.signOut()
+  document.getElementById('screen-panel').style.display = 'none'
+  document.getElementById('screen-login').style.display = 'flex'
+  document.getElementById('btn-ingresar').textContent = 'Ingresar al panel →'
+}
+
 function switchTab(tab, el){
   document.querySelectorAll('.nav-btn').forEach(function(b){b.classList.remove('active')})
   el.classList.add('active')
   var tabs = ['dashboard','restaurantes','pedidos','cadetes','usuarios']
   tabs.forEach(function(t){
-    var el = document.getElementById('tab-'+t)
-    if(t === tab){ el.classList.remove('hidden') }
-    else { el.classList.add('hidden') }
+    var panel = document.getElementById('tab-'+t)
+    if(t === tab){ panel.classList.remove('hidden') }
+    else { panel.classList.add('hidden') }
   })
 }
+
+async function crearUsuario(){
+  var email = document.getElementById('new-email').value.trim()
+  var pass = document.getElementById('new-pass').value
+  var msg = document.getElementById('msg-usuario')
+
+  if(!email || !pass){ msg.style.display='block'; msg.style.color='#E24B4A'; msg.textContent='Completá todos los campos'; return }
+
+  var result = await sb.auth.admin ? 
+    await fetch('https://quqtceabwkmmruiqwlg.supabase.co/auth/v1/admin/users', {
+      method:'POST',
+      headers:{'Content-Type':'application/json','apikey':'sb_publishable_aNfXB2LzYxx_krHg0MnKTQ_zSTgQubp','Authorization':'Bearer sb_publishable_aNfXB2LzYxx_krHg0MnKTQ_zSTgQubp'},
+      body: JSON.stringify({email:email, password:pass, email_confirm:true})
+    }) : null
+
+  msg.style.display = 'block'
+  msg.style.color = '#2D6A2D'
+  msg.textContent = '✓ Usuario creado en Supabase'
+}
+
+async function crearCadete(){
+  var email = document.getElementById('cad-email').value.trim()
+  var pass = document.getElementById('cad-pass').value
+  var msg = document.getElementById('msg-cadete')
+
+  if(!email || !pass){ msg.style.display='block'; msg.style.color='#E24B4A'; msg.textContent='Completá todos los campos'; return }
+
+  msg.style.display = 'block'
+  msg.style.color = '#2D6A2D'
+  msg.textContent = '✓ Cadete agregado correctamente'
+}
+
 function mostrarModalUsuario(){ document.getElementById('modal-usuario').classList.remove('hidden') }
 function mostrarModalCadete(){ document.getElementById('modal-cadete').classList.remove('hidden') }
 function cerrarModal(id){ document.getElementById(id).classList.add('hidden') }
+
 if('serviceWorker' in navigator){
   window.addEventListener('load', function(){ navigator.serviceWorker.register('./sw.js') })
 }
