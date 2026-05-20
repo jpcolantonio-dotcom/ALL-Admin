@@ -13,10 +13,12 @@
 <title>ALL — Admin</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-html,body{width:100%;height:100%;overflow-x:hidden}
+html,body{width:100%;height:100%;overflow:hidden}
 body{font-family:system-ui,-apple-system,sans-serif;background:#1A1A1A}
 
-#screen-login{width:100%;height:100vh;background:#1A1A1A;display:flex;flex-direction:column;overflow:hidden}
+#screen-login{display:flex;width:100%;height:100vh;background:#1A1A1A;flex-direction:column;overflow:hidden}
+#screen-panel{display:none;width:100%;height:100vh;background:#f5f5f5;flex-direction:column;overflow:hidden}
+
 .login-hero{background:#1A1A1A;padding:48px 24px 24px;display:flex;flex-direction:column;align-items:center;gap:10px;flex-shrink:0}
 .login-title{font-size:26px;font-weight:700;letter-spacing:-1px;color:#fff}
 .login-sub{font-size:12px;color:rgba(255,255,255,0.4)}
@@ -26,7 +28,6 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#1A1A1A}
 .btn-main{width:100%;padding:16px;background:#1A1A1A;color:#fff;border:none;border-radius:14px;font-size:16px;font-weight:700;cursor:pointer}
 .btn-naranja{background:#FF4D00 !important}
 
-#screen-panel{width:100%;height:100vh;background:#f5f5f5;display:flex;flex-direction:column;overflow:hidden}
 .topbar{padding:48px 16px 12px;background:#1A1A1A;display:flex;align-items:center;gap:10px;flex-shrink:0}
 .topbar-logo{font-size:20px;font-weight:700;letter-spacing:-1px;color:#fff}
 .topbar-logo span{color:#FF4D00}
@@ -103,7 +104,7 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#1A1A1A}
 .modal-title{font-size:18px;font-weight:700;color:#1A1A1A;margin-bottom:20px}
 .modal select{width:100%;padding:14px;font-size:15px;border-radius:12px;border:1.5px solid #eee;background:#fafafa;color:#1A1A1A;margin-bottom:16px;outline:none}
 
-.hidden{display:none}
+.hidden{display:none !important}
 </style>
 </head>
 <body>
@@ -112,8 +113,7 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#1A1A1A}
   <div class="login-hero">
     <svg width="70" height="70" viewBox="0 0 60 60">
       <rect width="60" height="60" rx="14" fill="#FF4D00"/>
-      <text x="30" y="38" text-anchor="middle" font-family="system-ui"
-        font-weight="700" font-size="20" letter-spacing="-1" fill="white">ALL</text>
+      <text x="30" y="38" text-anchor="middle" font-family="system-ui" font-weight="700" font-size="20" letter-spacing="-1" fill="white">ALL</text>
     </svg>
     <div class="login-title">Panel Admin</div>
     <div class="login-sub">Acceso exclusivo para administradores</div>
@@ -127,7 +127,7 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#1A1A1A}
   </div>
 </div>
 
-<div id="screen-panel" class="hidden">
+<div id="screen-panel">
   <div class="topbar">
     <div>
       <div class="topbar-logo">ALL <span>Admin</span></div>
@@ -147,114 +147,19 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#1A1A1A}
 
   <div id="tab-dashboard" class="content">
     <div class="stats-grid">
-      <div class="stat-card highlight">
-        <div class="stat-icon">📦</div>
-        <div class="stat-val">8</div>
-        <div class="stat-label">Pedidos hoy</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-icon">💰</div>
-        <div class="stat-val">$142k</div>
-        <div class="stat-label">Ingresos hoy</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-icon">🍽</div>
-        <div class="stat-val">3</div>
-        <div class="stat-label">Restaurantes</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-icon">🏍</div>
-        <div class="stat-val">2</div>
-        <div class="stat-label">Cadetes activos</div>
-      </div>
+      <div class="stat-card highlight"><div class="stat-icon">📦</div><div class="stat-val">8</div><div class="stat-label">Pedidos hoy</div></div>
+      <div class="stat-card"><div class="stat-icon">💰</div><div class="stat-val">$142k</div><div class="stat-label">Ingresos hoy</div></div>
+      <div class="stat-card"><div class="stat-icon">🍽</div><div class="stat-val">3</div><div class="stat-label">Restaurantes</div></div>
+      <div class="stat-card"><div class="stat-icon">🏍</div><div class="stat-val">2</div><div class="stat-label">Cadetes activos</div></div>
     </div>
     <div class="section-title">Pedidos en curso</div>
-    <div class="pedido-card">
-      <div class="pedido-head">
-        <div>
-          <div style="display:flex;align-items:center;gap:6px">
-            <span class="pedido-num">#1047</span>
-            <span class="tag tag-nuevo">NUEVO</span>
-          </div>
-          <div class="pedido-cliente">Martín Rodríguez</div>
-        </div>
-        <div class="pedido-hora">18:52</div>
-      </div>
-      <div class="pedido-body">2× Pizza de mariscos · 1× Sándwich de lomo</div>
-      <div class="pedido-footer">
-        <div><div class="pedido-total">$12.400</div><div class="pedido-rest">🦞 El Bodegón NKT</div></div>
-        <span class="tag tag-nuevo">Sin cadete</span>
-      </div>
-    </div>
-    <div class="pedido-card">
-      <div class="pedido-head">
-        <div>
-          <div style="display:flex;align-items:center;gap:6px">
-            <span class="pedido-num">#1046</span>
-            <span class="tag tag-camino">EN CAMINO</span>
-          </div>
-          <div class="pedido-cliente">Laura Gómez</div>
-        </div>
-        <div class="pedido-hora">18:38</div>
-      </div>
-      <div class="pedido-body">1× Cazuela de mariscos</div>
-      <div class="pedido-footer">
-        <div><div class="pedido-total">$9.800</div><div class="pedido-rest">🦞 El Bodegón NKT</div></div>
-        <span class="tag tag-ok">Marcos G.</span>
-      </div>
-    </div>
-  </div>
-
-  <div id="tab-restaurantes" class="content hidden">
-    <div class="section-title">Mis restaurantes</div>
-    <div class="rest-card">
-      <div class="rest-head">
-        <div class="rest-emoji">🦞</div>
-        <div class="rest-info"><div class="rest-nombre">El Bodegón NKT</div><div class="rest-cat">Mariscos · Pizzas · Sándwiches</div></div>
-        <span class="rest-badge abierto">Abierto</span>
-      </div>
-      <div class="rest-stats">
-        <div class="rest-stat"><div class="rest-stat-val">12</div><div class="rest-stat-label">Pedidos</div></div>
-        <div class="rest-stat"><div class="rest-stat-val">$48k</div><div class="rest-stat-label">Ingresos</div></div>
-        <div class="rest-stat"><div class="rest-stat-val">8</div><div class="rest-stat-label">Productos</div></div>
-      </div>
-    </div>
-    <div class="rest-card">
-      <div class="rest-head">
-        <div class="rest-emoji">🍕</div>
-        <div class="rest-info"><div class="rest-nombre">Colantonio's</div><div class="rest-cat">Pizza napolitana · Empanadas</div></div>
-        <span class="rest-badge abierto">Abierto</span>
-      </div>
-      <div class="rest-stats">
-        <div class="rest-stat"><div class="rest-stat-val">8</div><div class="rest-stat-label">Pedidos</div></div>
-        <div class="rest-stat"><div class="rest-stat-val">$32k</div><div class="rest-stat-label">Ingresos</div></div>
-        <div class="rest-stat"><div class="rest-stat-val">6</div><div class="rest-stat-label">Productos</div></div>
-      </div>
-    </div>
-    <div class="rest-card">
-      <div class="rest-head">
-        <div class="rest-emoji">🍣</div>
-        <div class="rest-info"><div class="rest-nombre">Kusama Sushi</div><div class="rest-cat">Sushi · Mariscos</div></div>
-        <span class="rest-badge cerrado">Cerrado</span>
-      </div>
-      <div class="rest-stats">
-        <div class="rest-stat"><div class="rest-stat-val">5</div><div class="rest-stat-label">Pedidos</div></div>
-        <div class="rest-stat"><div class="rest-stat-val">$62k</div><div class="rest-stat-label">Ingresos</div></div>
-        <div class="rest-stat"><div class="rest-stat-val">12</div><div class="rest-stat-label">Productos</div></div>
-      </div>
-    </div>
-    <button class="btn-add">+ Agregar restaurante</button>
-  </div>
-
-  <div id="tab-pedidos" class="content hidden">
-    <div class="section-title">Todos los pedidos de hoy</div>
     <div class="pedido-card">
       <div class="pedido-head">
         <div><div style="display:flex;align-items:center;gap:6px"><span class="pedido-num">#1047</span><span class="tag tag-nuevo">NUEVO</span></div><div class="pedido-cliente">Martín Rodríguez</div></div>
         <div class="pedido-hora">18:52</div>
       </div>
       <div class="pedido-body">2× Pizza de mariscos · 1× Sándwich de lomo</div>
-      <div class="pedido-footer"><div><div class="pedido-total">$12.400</div><div class="pedido-rest">🦞 Bodegón · 📍 San Martín 542</div></div></div>
+      <div class="pedido-footer"><div><div class="pedido-total">$12.400</div><div class="pedido-rest">🦞 El Bodegón NKT</div></div><span class="tag tag-nuevo">Sin cadete</span></div>
     </div>
     <div class="pedido-card">
       <div class="pedido-head">
@@ -262,13 +167,41 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#1A1A1A}
         <div class="pedido-hora">18:38</div>
       </div>
       <div class="pedido-body">1× Cazuela de mariscos</div>
+      <div class="pedido-footer"><div><div class="pedido-total">$9.800</div><div class="pedido-rest">🦞 El Bodegón NKT</div></div><span class="tag tag-ok">Marcos G.</span></div>
+    </div>
+  </div>
+
+  <div id="tab-restaurantes" class="content hidden">
+    <div class="section-title">Mis restaurantes</div>
+    <div class="rest-card">
+      <div class="rest-head"><div class="rest-emoji">🦞</div><div class="rest-info"><div class="rest-nombre">El Bodegón NKT</div><div class="rest-cat">Mariscos · Pizzas · Sándwiches</div></div><span class="rest-badge abierto">Abierto</span></div>
+      <div class="rest-stats"><div class="rest-stat"><div class="rest-stat-val">12</div><div class="rest-stat-label">Pedidos</div></div><div class="rest-stat"><div class="rest-stat-val">$48k</div><div class="rest-stat-label">Ingresos</div></div><div class="rest-stat"><div class="rest-stat-val">8</div><div class="rest-stat-label">Productos</div></div></div>
+    </div>
+    <div class="rest-card">
+      <div class="rest-head"><div class="rest-emoji">🍕</div><div class="rest-info"><div class="rest-nombre">Colantonio's</div><div class="rest-cat">Pizza napolitana · Empanadas</div></div><span class="rest-badge abierto">Abierto</span></div>
+      <div class="rest-stats"><div class="rest-stat"><div class="rest-stat-val">8</div><div class="rest-stat-label">Pedidos</div></div><div class="rest-stat"><div class="rest-stat-val">$32k</div><div class="rest-stat-label">Ingresos</div></div><div class="rest-stat"><div class="rest-stat-val">6</div><div class="rest-stat-label">Productos</div></div></div>
+    </div>
+    <div class="rest-card">
+      <div class="rest-head"><div class="rest-emoji">🍣</div><div class="rest-info"><div class="rest-nombre">Kusama Sushi</div><div class="rest-cat">Sushi · Mariscos</div></div><span class="rest-badge cerrado">Cerrado</span></div>
+      <div class="rest-stats"><div class="rest-stat"><div class="rest-stat-val">5</div><div class="rest-stat-label">Pedidos</div></div><div class="rest-stat"><div class="rest-stat-val">$62k</div><div class="rest-stat-label">Ingresos</div></div><div class="rest-stat"><div class="rest-stat-val">12</div><div class="rest-stat-label">Productos</div></div></div>
+    </div>
+    <button class="btn-add">+ Agregar restaurante</button>
+  </div>
+
+  <div id="tab-pedidos" class="content hidden">
+    <div class="section-title">Todos los pedidos de hoy</div>
+    <div class="pedido-card">
+      <div class="pedido-head"><div><div style="display:flex;align-items:center;gap:6px"><span class="pedido-num">#1047</span><span class="tag tag-nuevo">NUEVO</span></div><div class="pedido-cliente">Martín Rodríguez</div></div><div class="pedido-hora">18:52</div></div>
+      <div class="pedido-body">2× Pizza de mariscos · 1× Sándwich de lomo</div>
+      <div class="pedido-footer"><div><div class="pedido-total">$12.400</div><div class="pedido-rest">🦞 Bodegón · 📍 San Martín 542</div></div></div>
+    </div>
+    <div class="pedido-card">
+      <div class="pedido-head"><div><div style="display:flex;align-items:center;gap:6px"><span class="pedido-num">#1046</span><span class="tag tag-camino">EN CAMINO</span></div><div class="pedido-cliente">Laura Gómez</div></div><div class="pedido-hora">18:38</div></div>
+      <div class="pedido-body">1× Cazuela de mariscos</div>
       <div class="pedido-footer"><div><div class="pedido-total">$9.800</div><div class="pedido-rest">🦞 Bodegón · 📍 Mitre 1200</div></div></div>
     </div>
     <div class="pedido-card">
-      <div class="pedido-head">
-        <div><div style="display:flex;align-items:center;gap:6px"><span class="pedido-num">#1045</span><span class="tag tag-ok">ENTREGADO</span></div><div class="pedido-cliente">Carlos Pérez</div></div>
-        <div class="pedido-hora">18:10</div>
-      </div>
+      <div class="pedido-head"><div><div style="display:flex;align-items:center;gap:6px"><span class="pedido-num">#1045</span><span class="tag tag-ok">ENTREGADO</span></div><div class="pedido-cliente">Carlos Pérez</div></div><div class="pedido-hora">18:10</div></div>
       <div class="pedido-body">3× Empanada de mariscos</div>
       <div class="pedido-footer"><div><div class="pedido-total">$4.200</div><div class="pedido-rest">🦞 Bodegón · 📍 O'Higgins 880</div></div></div>
     </div>
@@ -276,46 +209,18 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#1A1A1A}
 
   <div id="tab-cadetes" class="content hidden">
     <div class="section-title">Cadetes registrados</div>
-    <div class="cadete-card">
-      <div class="cadete-avatar">MG</div>
-      <div class="cadete-info"><div class="cadete-nombre">Marcos González</div><div class="cadete-sub">🏍 Moto · Pedido #1046 en camino</div></div>
-      <span class="cadete-badge activo">Activo</span>
-    </div>
-    <div class="cadete-card">
-      <div class="cadete-avatar">LP</div>
-      <div class="cadete-info"><div class="cadete-nombre">Laura Peralta</div><div class="cadete-sub">🚲 Bici · Disponible</div></div>
-      <span class="cadete-badge libre">Libre</span>
-    </div>
-    <div class="cadete-card">
-      <div class="cadete-avatar">JR</div>
-      <div class="cadete-info"><div class="cadete-nombre">Juan Rodríguez</div><div class="cadete-sub">🏍 Moto · Fuera de turno</div></div>
-      <span class="cadete-badge libre">Inactivo</span>
-    </div>
+    <div class="cadete-card"><div class="cadete-avatar">MG</div><div class="cadete-info"><div class="cadete-nombre">Marcos González</div><div class="cadete-sub">🏍 Moto · Pedido #1046 en camino</div></div><span class="cadete-badge activo">Activo</span></div>
+    <div class="cadete-card"><div class="cadete-avatar">LP</div><div class="cadete-info"><div class="cadete-nombre">Laura Peralta</div><div class="cadete-sub">🚲 Bici · Disponible</div></div><span class="cadete-badge libre">Libre</span></div>
+    <div class="cadete-card"><div class="cadete-avatar">JR</div><div class="cadete-info"><div class="cadete-nombre">Juan Rodríguez</div><div class="cadete-sub">🏍 Moto · Fuera de turno</div></div><span class="cadete-badge libre">Inactivo</span></div>
     <button class="btn-add" onclick="mostrarModalCadete()">+ Agregar cadete</button>
   </div>
 
   <div id="tab-usuarios" class="content hidden">
     <div class="section-title">Usuarios del sistema</div>
-    <div class="user-card">
-      <div class="user-avatar">JP</div>
-      <div class="user-info"><div class="user-nombre">JP Colantonio</div><div class="user-email">admin@all.com</div></div>
-      <span class="user-rol">Admin</span>
-    </div>
-    <div class="user-card">
-      <div class="user-avatar" style="background:#2D6A2D">NB</div>
-      <div class="user-info"><div class="user-nombre">Encargado Bodegón</div><div class="user-email">bodegon@all.com</div></div>
-      <span class="user-rol">Encargado</span>
-    </div>
-    <div class="user-card">
-      <div class="user-avatar" style="background:#2D6A2D">CO</div>
-      <div class="user-info"><div class="user-nombre">Encargado Colantonio's</div><div class="user-email">colantonio@all.com</div></div>
-      <span class="user-rol">Encargado</span>
-    </div>
-    <div class="user-card">
-      <div class="user-avatar" style="background:#2D6A2D">KS</div>
-      <div class="user-info"><div class="user-nombre">Encargado Kusama</div><div class="user-email">kusama@all.com</div></div>
-      <span class="user-rol">Encargado</span>
-    </div>
+    <div class="user-card"><div class="user-avatar">JP</div><div class="user-info"><div class="user-nombre">JP Colantonio</div><div class="user-email">admin@all.com</div></div><span class="user-rol">Admin</span></div>
+    <div class="user-card"><div class="user-avatar" style="background:#2D6A2D">NB</div><div class="user-info"><div class="user-nombre">Encargado Bodegón</div><div class="user-email">bodegon@all.com</div></div><span class="user-rol">Encargado</span></div>
+    <div class="user-card"><div class="user-avatar" style="background:#2D6A2D">CO</div><div class="user-info"><div class="user-nombre">Encargado Colantonio's</div><div class="user-email">colantonio@all.com</div></div><span class="user-rol">Encargado</span></div>
+    <div class="user-card"><div class="user-avatar" style="background:#2D6A2D">KS</div><div class="user-info"><div class="user-nombre">Encargado Kusama</div><div class="user-email">kusama@all.com</div></div><span class="user-rol">Encargado</span></div>
     <button class="btn-add" onclick="mostrarModalUsuario()">+ Agregar usuario</button>
   </div>
 </div>
@@ -323,17 +228,14 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#1A1A1A}
 <div id="modal-usuario" class="modal-bg hidden" onclick="cerrarModal('modal-usuario')">
   <div class="modal" onclick="event.stopPropagation()">
     <div class="modal-title">Nuevo usuario</div>
-    <div class="field-label">Nombre completo</div>
-    <input type="text" placeholder="Ej: Juan Pérez" class="input"/>
-    <div class="field-label">Email</div>
-    <input type="email" placeholder="usuario@all.com" class="input"/>
-    <div class="field-label">Contraseña</div>
-    <input type="password" placeholder="••••••••" class="input"/>
+    <div class="field-label">Nombre completo</div><input type="text" placeholder="Ej: Juan Pérez" class="input"/>
+    <div class="field-label">Email</div><input type="email" placeholder="usuario@all.com" class="input"/>
+    <div class="field-label">Contraseña</div><input type="password" placeholder="••••••••" class="input"/>
     <div class="field-label">Rol</div>
     <select><option>Encargado de restaurante</option><option>Cadete</option><option>Admin</option></select>
-    <div class="field-label" style="margin-top:0">Restaurante (si es encargado)</div>
+    <div class="field-label">Restaurante</div>
     <select><option>El Bodegón NKT</option><option>Colantonio's</option><option>Kusama Sushi</option></select>
-    <button class="btn-main btn-naranja">Crear usuario</button>
+    <button class="btn-main btn-naranja" style="margin-top:8px">Crear usuario</button>
     <button class="btn-add" style="margin-top:8px" onclick="cerrarModal('modal-usuario')">Cancelar</button>
   </div>
 </div>
@@ -341,40 +243,44 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#1A1A1A}
 <div id="modal-cadete" class="modal-bg hidden" onclick="cerrarModal('modal-cadete')">
   <div class="modal" onclick="event.stopPropagation()">
     <div class="modal-title">Nuevo cadete</div>
-    <div class="field-label">Nombre completo</div>
-    <input type="text" placeholder="Ej: Carlos López" class="input"/>
-    <div class="field-label">Email</div>
-    <input type="email" placeholder="cadete@all.com" class="input"/>
-    <div class="field-label">Contraseña</div>
-    <input type="password" placeholder="••••••••" class="input"/>
+    <div class="field-label">Nombre completo</div><input type="text" placeholder="Ej: Carlos López" class="input"/>
+    <div class="field-label">Email</div><input type="email" placeholder="cadete@all.com" class="input"/>
+    <div class="field-label">Contraseña</div><input type="password" placeholder="••••••••" class="input"/>
     <div class="field-label">Vehículo</div>
     <select><option>Moto</option><option>Bicicleta</option><option>Auto</option></select>
-    <button class="btn-main btn-naranja">Agregar cadete</button>
+    <button class="btn-main btn-naranja" style="margin-top:8px">Agregar cadete</button>
     <button class="btn-add" style="margin-top:8px" onclick="cerrarModal('modal-cadete')">Cancelar</button>
   </div>
 </div>
 
 <script>
-function ingresar() {
-  document.getElementById('screen-login').classList.add('hidden')
-  document.getElementById('screen-panel').classList.remove('hidden')
+function ingresar(){
+  var login = document.getElementById('screen-login')
+  var panel = document.getElementById('screen-panel')
+  login.style.display = 'none'
+  panel.style.display = 'flex'
 }
-function cerrarSesion() {
-  document.getElementById('screen-panel').classList.add('hidden')
-  document.getElementById('screen-login').classList.remove('hidden')
+function cerrarSesion(){
+  var login = document.getElementById('screen-login')
+  var panel = document.getElementById('screen-panel')
+  panel.style.display = 'none'
+  login.style.display = 'flex'
 }
-function switchTab(tab, el) {
-  document.querySelectorAll('.nav-btn').forEach(function(b) { b.classList.remove('active') })
+function switchTab(tab, el){
+  document.querySelectorAll('.nav-btn').forEach(function(b){b.classList.remove('active')})
   el.classList.add('active')
   var tabs = ['dashboard','restaurantes','pedidos','cadetes','usuarios']
-  tabs.forEach(function(t) { document.getElementById('tab-' + t).classList.add('hidden') })
-  document.getElementById('tab-' + tab).classList.remove('hidden')
+  tabs.forEach(function(t){
+    var el = document.getElementById('tab-'+t)
+    if(t === tab){ el.classList.remove('hidden') }
+    else { el.classList.add('hidden') }
+  })
 }
-function mostrarModalUsuario() { document.getElementById('modal-usuario').classList.remove('hidden') }
-function mostrarModalCadete() { document.getElementById('modal-cadete').classList.remove('hidden') }
-function cerrarModal(id) { document.getElementById(id).classList.add('hidden') }
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() { navigator.serviceWorker.register('./sw.js') })
+function mostrarModalUsuario(){ document.getElementById('modal-usuario').classList.remove('hidden') }
+function mostrarModalCadete(){ document.getElementById('modal-cadete').classList.remove('hidden') }
+function cerrarModal(id){ document.getElementById(id).classList.add('hidden') }
+if('serviceWorker' in navigator){
+  window.addEventListener('load', function(){ navigator.serviceWorker.register('./sw.js') })
 }
 </script>
 </body>
