@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -15,34 +16,30 @@
 html,body{width:100%;height:100%;overflow-x:hidden}
 body{font-family:system-ui,-apple-system,sans-serif;background:#1A1A1A}
 
-/* LOGIN */
-#screen-login{width:100%;min-height:100vh;background:#1A1A1A;display:flex;flex-direction:column}
-.login-hero{background:#1A1A1A;padding:60px 24px 28px;display:flex;flex-direction:column;align-items:center;gap:10px}
+#screen-login{width:100%;height:100vh;background:#1A1A1A;display:flex;flex-direction:column;overflow:hidden}
+.login-hero{background:#1A1A1A;padding:48px 24px 24px;display:flex;flex-direction:column;align-items:center;gap:10px;flex-shrink:0}
 .login-title{font-size:26px;font-weight:700;letter-spacing:-1px;color:#fff}
 .login-sub{font-size:12px;color:rgba(255,255,255,0.4)}
-.login-body{flex:1;background:#fff;border-radius:28px 28px 0 0;padding:28px 20px;margin-top:8px}
+.login-body{flex:1;background:#fff;border-radius:28px 28px 0 0;padding:28px 20px;overflow-y:auto}
 .field-label{font-size:12px;font-weight:600;color:#1A1A1A;margin-bottom:8px}
 .input{width:100%;padding:14px;font-size:15px;border-radius:12px;border:1.5px solid #eee;background:#fafafa;color:#1A1A1A;margin-bottom:16px;outline:none}
 .btn-main{width:100%;padding:16px;background:#1A1A1A;color:#fff;border:none;border-radius:14px;font-size:16px;font-weight:700;cursor:pointer}
-.btn-naranja{background:#FF4D00}
+.btn-naranja{background:#FF4D00 !important}
 
-/* PANEL */
-#screen-panel{width:100%;min-height:100vh;background:#f5f5f5;display:flex;flex-direction:column}
-.topbar{padding:52px 16px 12px;background:#1A1A1A;display:flex;align-items:center;gap:10px}
+#screen-panel{width:100%;height:100vh;background:#f5f5f5;display:flex;flex-direction:column;overflow:hidden}
+.topbar{padding:48px 16px 12px;background:#1A1A1A;display:flex;align-items:center;gap:10px;flex-shrink:0}
 .topbar-logo{font-size:20px;font-weight:700;letter-spacing:-1px;color:#fff}
 .topbar-logo span{color:#FF4D00}
 .topbar-sub{font-size:11px;color:rgba(255,255,255,0.4);margin-top:2px}
 .topbar-right{margin-left:auto}
 
-/* NAV */
-.nav{display:flex;background:#1A1A1A;padding:0 0 8px;overflow-x:auto;gap:4px;padding:0 12px 10px}
+.nav{display:flex;background:#1A1A1A;padding:0 12px 12px;overflow-x:auto;gap:6px;flex-shrink:0}
 .nav::-webkit-scrollbar{display:none}
 .nav-btn{padding:8px 16px;border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;border:none;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.6);white-space:nowrap;flex-shrink:0}
 .nav-btn.active{background:#FF4D00;color:#fff}
 
 .content{flex:1;padding:14px;overflow-y:auto}
 
-/* STATS */
 .stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
 .stat-card{background:#fff;border-radius:16px;padding:16px;border:1px solid #eee}
 .stat-card.highlight{background:#FF4D00}
@@ -52,10 +49,8 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#1A1A1A}
 .stat-card.highlight .stat-val{color:#fff}
 .stat-card.highlight .stat-label{color:rgba(255,255,255,0.7)}
 
-/* SECTION */
 .section-title{font-size:11px;font-weight:700;color:#888;letter-spacing:1px;text-transform:uppercase;margin:16px 0 10px}
 
-/* RESTAURANTES */
 .rest-card{background:#fff;border-radius:16px;border:1px solid #eee;margin-bottom:10px;overflow:hidden}
 .rest-head{padding:14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid #f5f5f5}
 .rest-emoji{font-size:26px;width:48px;height:48px;border-radius:12px;background:#f5f5f5;display:flex;align-items:center;justify-content:center;flex-shrink:0}
@@ -70,7 +65,6 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#1A1A1A}
 .rest-stat-val{font-size:16px;font-weight:700;color:#1A1A1A}
 .rest-stat-label{font-size:10px;color:#888}
 
-/* PEDIDOS */
 .pedido-card{background:#fff;border-radius:14px;border:1px solid #eee;margin-bottom:10px;overflow:hidden}
 .pedido-head{padding:12px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #f5f5f5}
 .pedido-num{font-size:12px;font-weight:700;color:#FF4D00}
@@ -86,7 +80,6 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#1A1A1A}
 .pedido-total{font-size:14px;font-weight:700;color:#1A1A1A}
 .pedido-rest{font-size:11px;color:#888;margin-top:2px}
 
-/* CADETES */
 .cadete-card{background:#fff;border-radius:14px;border:1px solid #eee;margin-bottom:10px;padding:14px;display:flex;align-items:center;gap:12px}
 .cadete-avatar{width:46px;height:46px;border-radius:50%;background:#1A1A1A;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#FF4D00;flex-shrink:0}
 .cadete-info{flex:1}
@@ -96,7 +89,6 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#1A1A1A}
 .cadete-badge.activo{background:#E8F5E9;color:#2D6A2D}
 .cadete-badge.libre{background:#f5f5f5;color:#888}
 
-/* USUARIOS */
 .user-card{background:#fff;border-radius:14px;border:1px solid #eee;margin-bottom:10px;padding:14px;display:flex;align-items:center;gap:12px}
 .user-avatar{width:42px;height:42px;border-radius:50%;background:#FF4D00;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#fff;flex-shrink:0}
 .user-info{flex:1}
@@ -106,7 +98,6 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#1A1A1A}
 
 .btn-add{width:100%;padding:14px;background:#f5f5f5;color:#1A1A1A;border:1.5px dashed #ddd;border-radius:14px;font-size:14px;font-weight:700;cursor:pointer;margin-top:4px}
 
-/* MODAL */
 .modal-bg{position:fixed;inset:0;background:rgba(0,0,0,0.5);display:flex;align-items:flex-end;z-index:100}
 .modal{background:#fff;border-radius:24px 24px 0 0;padding:24px 20px;width:100%;max-height:80vh;overflow-y:auto}
 .modal-title{font-size:18px;font-weight:700;color:#1A1A1A;margin-bottom:20px}
@@ -117,7 +108,6 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#1A1A1A}
 </head>
 <body>
 
-<!-- LOGIN -->
 <div id="screen-login">
   <div class="login-hero">
     <svg width="70" height="70" viewBox="0 0 60 60">
@@ -137,7 +127,6 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#1A1A1A}
   </div>
 </div>
 
-<!-- PANEL -->
 <div id="screen-panel" class="hidden">
   <div class="topbar">
     <div>
@@ -148,7 +137,6 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#1A1A1A}
       <button style="background:rgba(255,255,255,0.1);border:none;color:#fff;padding:8px 14px;border-radius:20px;font-size:12px;cursor:pointer" onclick="cerrarSesion()">Salir</button>
     </div>
   </div>
-
   <div class="nav">
     <button class="nav-btn active" onclick="switchTab('dashboard',this)">Dashboard</button>
     <button class="nav-btn" onclick="switchTab('restaurantes',this)">Restaurantes</button>
@@ -157,7 +145,6 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#1A1A1A}
     <button class="nav-btn" onclick="switchTab('usuarios',this)">Usuarios</button>
   </div>
 
-  <!-- DASHBOARD -->
   <div id="tab-dashboard" class="content">
     <div class="stats-grid">
       <div class="stat-card highlight">
@@ -181,7 +168,6 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#1A1A1A}
         <div class="stat-label">Cadetes activos</div>
       </div>
     </div>
-
     <div class="section-title">Pedidos en curso</div>
     <div class="pedido-card">
       <div class="pedido-head">
@@ -219,20 +205,16 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#1A1A1A}
     </div>
   </div>
 
-  <!-- RESTAURANTES -->
   <div id="tab-restaurantes" class="content hidden">
     <div class="section-title">Mis restaurantes</div>
     <div class="rest-card">
       <div class="rest-head">
         <div class="rest-emoji">🦞</div>
-        <div class="rest-info">
-          <div class="rest-nombre">El Bodegón NKT</div>
-          <div class="rest-cat">Mariscos · Pizzas · Sándwiches</div>
-        </div>
+        <div class="rest-info"><div class="rest-nombre">El Bodegón NKT</div><div class="rest-cat">Mariscos · Pizzas · Sándwiches</div></div>
         <span class="rest-badge abierto">Abierto</span>
       </div>
       <div class="rest-stats">
-        <div class="rest-stat"><div class="rest-stat-val">12</div><div class="rest-stat-label">Pedidos hoy</div></div>
+        <div class="rest-stat"><div class="rest-stat-val">12</div><div class="rest-stat-label">Pedidos</div></div>
         <div class="rest-stat"><div class="rest-stat-val">$48k</div><div class="rest-stat-label">Ingresos</div></div>
         <div class="rest-stat"><div class="rest-stat-val">8</div><div class="rest-stat-label">Productos</div></div>
       </div>
@@ -240,14 +222,11 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#1A1A1A}
     <div class="rest-card">
       <div class="rest-head">
         <div class="rest-emoji">🍕</div>
-        <div class="rest-info">
-          <div class="rest-nombre">Colantonio's</div>
-          <div class="rest-cat">Pizza napolitana · Empanadas</div>
-        </div>
+        <div class="rest-info"><div class="rest-nombre">Colantonio's</div><div class="rest-cat">Pizza napolitana · Empanadas</div></div>
         <span class="rest-badge abierto">Abierto</span>
       </div>
       <div class="rest-stats">
-        <div class="rest-stat"><div class="rest-stat-val">8</div><div class="rest-stat-label">Pedidos hoy</div></div>
+        <div class="rest-stat"><div class="rest-stat-val">8</div><div class="rest-stat-label">Pedidos</div></div>
         <div class="rest-stat"><div class="rest-stat-val">$32k</div><div class="rest-stat-label">Ingresos</div></div>
         <div class="rest-stat"><div class="rest-stat-val">6</div><div class="rest-stat-label">Productos</div></div>
       </div>
@@ -255,14 +234,11 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#1A1A1A}
     <div class="rest-card">
       <div class="rest-head">
         <div class="rest-emoji">🍣</div>
-        <div class="rest-info">
-          <div class="rest-nombre">Kusama Sushi</div>
-          <div class="rest-cat">Sushi · Mariscos</div>
-        </div>
+        <div class="rest-info"><div class="rest-nombre">Kusama Sushi</div><div class="rest-cat">Sushi · Mariscos</div></div>
         <span class="rest-badge cerrado">Cerrado</span>
       </div>
       <div class="rest-stats">
-        <div class="rest-stat"><div class="rest-stat-val">5</div><div class="rest-stat-label">Pedidos hoy</div></div>
+        <div class="rest-stat"><div class="rest-stat-val">5</div><div class="rest-stat-label">Pedidos</div></div>
         <div class="rest-stat"><div class="rest-stat-val">$62k</div><div class="rest-stat-label">Ingresos</div></div>
         <div class="rest-stat"><div class="rest-stat-val">12</div><div class="rest-stat-label">Productos</div></div>
       </div>
@@ -270,129 +246,80 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#1A1A1A}
     <button class="btn-add">+ Agregar restaurante</button>
   </div>
 
-  <!-- PEDIDOS -->
   <div id="tab-pedidos" class="content hidden">
     <div class="section-title">Todos los pedidos de hoy</div>
     <div class="pedido-card">
       <div class="pedido-head">
-        <div>
-          <div style="display:flex;align-items:center;gap:6px">
-            <span class="pedido-num">#1047</span>
-            <span class="tag tag-nuevo">NUEVO</span>
-          </div>
-          <div class="pedido-cliente">Martín Rodríguez</div>
-        </div>
+        <div><div style="display:flex;align-items:center;gap:6px"><span class="pedido-num">#1047</span><span class="tag tag-nuevo">NUEVO</span></div><div class="pedido-cliente">Martín Rodríguez</div></div>
         <div class="pedido-hora">18:52</div>
       </div>
       <div class="pedido-body">2× Pizza de mariscos · 1× Sándwich de lomo</div>
-      <div class="pedido-footer">
-        <div><div class="pedido-total">$12.400</div><div class="pedido-rest">🦞 Bodegón NKT · 📍 San Martín 542</div></div>
-      </div>
+      <div class="pedido-footer"><div><div class="pedido-total">$12.400</div><div class="pedido-rest">🦞 Bodegón · 📍 San Martín 542</div></div></div>
     </div>
     <div class="pedido-card">
       <div class="pedido-head">
-        <div>
-          <div style="display:flex;align-items:center;gap:6px">
-            <span class="pedido-num">#1046</span>
-            <span class="tag tag-camino">EN CAMINO</span>
-          </div>
-          <div class="pedido-cliente">Laura Gómez</div>
-        </div>
+        <div><div style="display:flex;align-items:center;gap:6px"><span class="pedido-num">#1046</span><span class="tag tag-camino">EN CAMINO</span></div><div class="pedido-cliente">Laura Gómez</div></div>
         <div class="pedido-hora">18:38</div>
       </div>
       <div class="pedido-body">1× Cazuela de mariscos</div>
-      <div class="pedido-footer">
-        <div><div class="pedido-total">$9.800</div><div class="pedido-rest">🦞 Bodegón NKT · 📍 Mitre 1200</div></div>
-      </div>
+      <div class="pedido-footer"><div><div class="pedido-total">$9.800</div><div class="pedido-rest">🦞 Bodegón · 📍 Mitre 1200</div></div></div>
     </div>
     <div class="pedido-card">
       <div class="pedido-head">
-        <div>
-          <div style="display:flex;align-items:center;gap:6px">
-            <span class="pedido-num">#1045</span>
-            <span class="tag tag-ok">ENTREGADO</span>
-          </div>
-          <div class="pedido-cliente">Carlos Pérez</div>
-        </div>
+        <div><div style="display:flex;align-items:center;gap:6px"><span class="pedido-num">#1045</span><span class="tag tag-ok">ENTREGADO</span></div><div class="pedido-cliente">Carlos Pérez</div></div>
         <div class="pedido-hora">18:10</div>
       </div>
       <div class="pedido-body">3× Empanada de mariscos</div>
-      <div class="pedido-footer">
-        <div><div class="pedido-total">$4.200</div><div class="pedido-rest">🦞 Bodegón NKT · 📍 O'Higgins 880</div></div>
-      </div>
+      <div class="pedido-footer"><div><div class="pedido-total">$4.200</div><div class="pedido-rest">🦞 Bodegón · 📍 O'Higgins 880</div></div></div>
     </div>
   </div>
 
-  <!-- CADETES -->
   <div id="tab-cadetes" class="content hidden">
     <div class="section-title">Cadetes registrados</div>
     <div class="cadete-card">
       <div class="cadete-avatar">MG</div>
-      <div class="cadete-info">
-        <div class="cadete-nombre">Marcos González</div>
-        <div class="cadete-sub">🏍 Moto · Pedido #1046 en camino</div>
-      </div>
+      <div class="cadete-info"><div class="cadete-nombre">Marcos González</div><div class="cadete-sub">🏍 Moto · Pedido #1046 en camino</div></div>
       <span class="cadete-badge activo">Activo</span>
     </div>
     <div class="cadete-card">
       <div class="cadete-avatar">LP</div>
-      <div class="cadete-info">
-        <div class="cadete-nombre">Laura Peralta</div>
-        <div class="cadete-sub">🚲 Bici · Disponible</div>
-      </div>
+      <div class="cadete-info"><div class="cadete-nombre">Laura Peralta</div><div class="cadete-sub">🚲 Bici · Disponible</div></div>
       <span class="cadete-badge libre">Libre</span>
     </div>
     <div class="cadete-card">
       <div class="cadete-avatar">JR</div>
-      <div class="cadete-info">
-        <div class="cadete-nombre">Juan Rodríguez</div>
-        <div class="cadete-sub">🏍 Moto · Fuera de turno</div>
-      </div>
+      <div class="cadete-info"><div class="cadete-nombre">Juan Rodríguez</div><div class="cadete-sub">🏍 Moto · Fuera de turno</div></div>
       <span class="cadete-badge libre">Inactivo</span>
     </div>
     <button class="btn-add" onclick="mostrarModalCadete()">+ Agregar cadete</button>
   </div>
 
-  <!-- USUARIOS -->
   <div id="tab-usuarios" class="content hidden">
     <div class="section-title">Usuarios del sistema</div>
     <div class="user-card">
       <div class="user-avatar">JP</div>
-      <div class="user-info">
-        <div class="user-nombre">JP Colantonio</div>
-        <div class="user-email">admin@all.com</div>
-      </div>
+      <div class="user-info"><div class="user-nombre">JP Colantonio</div><div class="user-email">admin@all.com</div></div>
       <span class="user-rol">Admin</span>
     </div>
     <div class="user-card">
       <div class="user-avatar" style="background:#2D6A2D">NB</div>
-      <div class="user-info">
-        <div class="user-nombre">Encargado Bodegón</div>
-        <div class="user-email">bodegon@all.com</div>
-      </div>
+      <div class="user-info"><div class="user-nombre">Encargado Bodegón</div><div class="user-email">bodegon@all.com</div></div>
       <span class="user-rol">Encargado</span>
     </div>
     <div class="user-card">
       <div class="user-avatar" style="background:#2D6A2D">CO</div>
-      <div class="user-info">
-        <div class="user-nombre">Encargado Colantonio's</div>
-        <div class="user-email">colantonio@all.com</div>
-      </div>
+      <div class="user-info"><div class="user-nombre">Encargado Colantonio's</div><div class="user-email">colantonio@all.com</div></div>
       <span class="user-rol">Encargado</span>
     </div>
     <div class="user-card">
       <div class="user-avatar" style="background:#2D6A2D">KS</div>
-      <div class="user-info">
-        <div class="user-nombre">Encargado Kusama</div>
-        <div class="user-email">kusama@all.com</div>
-      </div>
+      <div class="user-info"><div class="user-nombre">Encargado Kusama</div><div class="user-email">kusama@all.com</div></div>
       <span class="user-rol">Encargado</span>
     </div>
     <button class="btn-add" onclick="mostrarModalUsuario()">+ Agregar usuario</button>
   </div>
 </div>
 
-<!-- MODAL NUEVO USUARIO -->
 <div id="modal-usuario" class="modal-bg hidden" onclick="cerrarModal('modal-usuario')">
   <div class="modal" onclick="event.stopPropagation()">
     <div class="modal-title">Nuevo usuario</div>
@@ -403,23 +330,14 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#1A1A1A}
     <div class="field-label">Contraseña</div>
     <input type="password" placeholder="••••••••" class="input"/>
     <div class="field-label">Rol</div>
-    <select>
-      <option>Encargado de restaurante</option>
-      <option>Cadete</option>
-      <option>Admin</option>
-    </select>
-    <div class="field-label">Restaurante (si es encargado)</div>
-    <select>
-      <option>El Bodegón NKT</option>
-      <option>Colantonio's</option>
-      <option>Kusama Sushi</option>
-    </select>
+    <select><option>Encargado de restaurante</option><option>Cadete</option><option>Admin</option></select>
+    <div class="field-label" style="margin-top:0">Restaurante (si es encargado)</div>
+    <select><option>El Bodegón NKT</option><option>Colantonio's</option><option>Kusama Sushi</option></select>
     <button class="btn-main btn-naranja">Crear usuario</button>
     <button class="btn-add" style="margin-top:8px" onclick="cerrarModal('modal-usuario')">Cancelar</button>
   </div>
 </div>
 
-<!-- MODAL NUEVO CADETE -->
 <div id="modal-cadete" class="modal-bg hidden" onclick="cerrarModal('modal-cadete')">
   <div class="modal" onclick="event.stopPropagation()">
     <div class="modal-title">Nuevo cadete</div>
@@ -430,11 +348,7 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#1A1A1A}
     <div class="field-label">Contraseña</div>
     <input type="password" placeholder="••••••••" class="input"/>
     <div class="field-label">Vehículo</div>
-    <select>
-      <option>Moto</option>
-      <option>Bicicleta</option>
-      <option>Auto</option>
-    </select>
+    <select><option>Moto</option><option>Bicicleta</option><option>Auto</option></select>
     <button class="btn-main btn-naranja">Agregar cadete</button>
     <button class="btn-add" style="margin-top:8px" onclick="cerrarModal('modal-cadete')">Cancelar</button>
   </div>
@@ -445,38 +359,22 @@ function ingresar() {
   document.getElementById('screen-login').classList.add('hidden')
   document.getElementById('screen-panel').classList.remove('hidden')
 }
-
 function cerrarSesion() {
   document.getElementById('screen-panel').classList.add('hidden')
   document.getElementById('screen-login').classList.remove('hidden')
 }
-
 function switchTab(tab, el) {
   document.querySelectorAll('.nav-btn').forEach(function(b) { b.classList.remove('active') })
   el.classList.add('active')
   var tabs = ['dashboard','restaurantes','pedidos','cadetes','usuarios']
-  tabs.forEach(function(t) {
-    document.getElementById('tab-' + t).classList.add('hidden')
-  })
+  tabs.forEach(function(t) { document.getElementById('tab-' + t).classList.add('hidden') })
   document.getElementById('tab-' + tab).classList.remove('hidden')
 }
-
-function mostrarModalUsuario() {
-  document.getElementById('modal-usuario').classList.remove('hidden')
-}
-
-function mostrarModalCadete() {
-  document.getElementById('modal-cadete').classList.remove('hidden')
-}
-
-function cerrarModal(id) {
-  document.getElementById(id).classList.add('hidden')
-}
-
+function mostrarModalUsuario() { document.getElementById('modal-usuario').classList.remove('hidden') }
+function mostrarModalCadete() { document.getElementById('modal-cadete').classList.remove('hidden') }
+function cerrarModal(id) { document.getElementById(id).classList.add('hidden') }
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    navigator.serviceWorker.register('./sw.js')
-  })
+  window.addEventListener('load', function() { navigator.serviceWorker.register('./sw.js') })
 }
 </script>
 </body>
